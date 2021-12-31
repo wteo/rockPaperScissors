@@ -4,83 +4,50 @@ const scissors = document.querySelector("#scissors");
 const figure = document.querySelector("figure");
 const images = document.querySelectorAll(".image");
 
+function random() {
+    const choices = [rock, paper, scissors];
+    const randomization = choices[Math.floor(Math.random() * choices.length)];
+    return randomization;
+    }
 
-
-function border() {
-    const images = document.querySelectorAll(".image");
+function resize() {
     for (let image of images) {
-        image.addEventListener("mouseover", function() {
-            image.style.border = "3px solid black";
-            });
-        image.addEventListener("mouseout", function() {
-            image.style.border = "";
-            });
+        image.style.width = "100px";
+        image.style.height = "100px";
         }
     }
 
-
-
-function random() {
-    const choices = [rock, paper, scissors];
-    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    return computerChoice;
+function getResults(chosenImage, statement) {
+    const p = document.createElement("p");
+    const br = document.createElement("br");
+    p.innerText = statement;
+    figure.append(p);
+    p.append(br);
+    p.append(chosenImage);
     }
 
-
-
-for (let playerTurn of images) {
-
-    playerTurn.addEventListener("click", function() {
-
-        const computerTurn = random();
-        
-        if (playerTurn === computerTurn) {
-            
-            figure.innerHTML = "It's a tie!";
-
-            const playerResult = document.createElement("p");
-            playerResult.innerHTML = `You chose: ${playerTurn}`;
-            figure.appendChild(playerResult);
-            
-            const computerResult = document.createElement("p");
-            computerResult.innerHTML = `Your computer chose: ${computerTurn}`;
-            figure.appendChild(computerResult);
-           
-            console.log(playerTurn);
-            console.log(computerTurn);
-
-            } else if (playerTurn === rock && computerTurn === scissors || playerTurn === paper && computerTurn === rock ||
-            playerTurn === scissors && computerTurn === paper) {
-
-            figure.innerHTML = "You win!";
-
-            const playerResult = document.createElement("p");
-            playerResult.innerHTML = `You chose: ${playerTurn}`;
-            figure.appendChild(playerResult);
-            
-            const computerResult = document.createElement("p");
-            computerResult.innerHTML = `Your computer chose: ${computerTurn}`;
-            figure.appendChild(computerResult);
-
-            console.log(playerTurn);
-            console.log(computerTurn);
-
-            } else {
-            
-            figure.innerHTML = "Sorry, you lose. :-( Please try again.";
-            
-            const playerResult = document.createElement("p");
-            playerResult.innerHTML = `You chose: ${playerTurn}`;
-            figure.appendChild(playerResult);
-            
-            const computerResult = document.createElement("p");
-            computerResult.innerHTML = `Your computer chose: ${computerTurn}`;
-            figure.appendChild(computerResult);
-
-            console.log(playerTurn);
-            console.log(computerTurn); 
-            }
-        })
+function playerInput() {
+    for (let player of images) {
+        player.addEventListener("click", function() {
+            const computer = random();
+            if (player === computer) {
+                    figure.innerText = "It's a tie!";
+                    getResults(player, "Both you and your computer chose:");
+                    resize();
+               } else if (player === rock && computer === scissors || player === paper && computer === rock ||
+                player === scissors && computer === paper) {
+                    figure.innerText = "You win!";
+                    getResults(player, "You chose:");
+                    getResults(computer, "Your computer chose:");
+                    resize();
+                } else {
+                figure.innerText = "Sorry, you lose. :-( Please try again.";
+                getResults(player, "You chose:");
+                getResults(computer, "Your computer chose:");
+                resize();
+                }
+            })
+        }
     }
 
-border();
+playerInput();
