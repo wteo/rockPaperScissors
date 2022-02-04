@@ -1,8 +1,0 @@
-.image {
-    width: 250px;
-    height: 250px;   
-}
-
-.image:hover {
-    border: 3px solid black;
-}
