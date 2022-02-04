@@ -1,6 +1,6 @@
 # Rock, Paper and Scissors
 
-Play against the AI a short game of Rock, Paper and Scissors game. 
+Play against the AI a game of Rock, Paper and Scissors game. 
 
 Link to game: https://wteo.github.io/rockPaperScissors/
 
