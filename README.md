@@ -1,6 +1,6 @@
 # Rock, Paper and Scissors
 
-Play with AI a short game of Rock, Paper and Scissors game. 
+Play against the AI a short game of Rock, Paper and Scissors game. 
 
 Link to game: https://wteo.github.io/rockPaperScissors/
 
@@ -15,3 +15,5 @@ Rules of the game are simple.
 If you, the player, chooses the same element as the AI (i.e Paper vs Paper, Rock vs Rock), both you and AI are tied. 
 
 To restart the game, simply refresh the web page.
+
+There is no complicated algorithm here. The choice the AI makes will always be random, with 33.33% for every available choice.
